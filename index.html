@@ -1,82 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>🎵 Gitanno Music</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gitanno Music</title>
   <style>
     body {
-      background-color: #121212;
-      color: #e0e0e0;
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.cdn-files-a.com/ready_uploads/media/21710/2000_5cdbfb0af3246.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
     }
 
     header {
-      background-color: #1f1f1f;
-      padding: 1em;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
       text-align: center;
-      font-size: 1.8em;
-      color: #1db954;
-      border-bottom: 1px solid #333;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: bold;
     }
 
     nav {
-      background-color: #282828;
       display: flex;
       justify-content: center;
-      padding: 0.5em;
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     nav a {
-      color: #e0e0e0;
-      margin: 0 1em;
+      padding: 1rem;
+      color: #fff;
       text-decoration: none;
-      padding: 0.5em;
-      border-radius: 5px;
+      font-weight: bold;
       transition: background 0.3s;
     }
 
     nav a:hover {
-      background-color: #1db954;
-      color: #000;
+      background-color: #444;
     }
 
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 2em;
-    }
-
-    .faixa {
-      background-color: #1e1e1e;
-      margin-bottom: 2em;
-      padding: 1em;
+    main {
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.6);
+      max-width: 800px;
+      margin: 2rem auto;
       border-radius: 10px;
-      box-shadow: 0 0 8px #000;
-    }
-
-    .faixa h3 {
-      margin: 0 0 0.5em;
-      color: #1db954;
-    }
-
-    audio {
-      width: 100%;
-      margin-top: 0.5em;
     }
 
     footer {
       text-align: center;
-      padding: 1em;
-      color: #888;
-      font-size: 0.9em;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background-color: rgba(0, 0, 0, 0.7);
     }
   </style>
 </head>
 <body>
   <header>
-    🎶 Gitanno Music — Seu acervo musical online
+    <h1>Gitanno Music</h1>
   </header>
 
   <nav>
@@ -84,37 +69,16 @@
     <a href="#">MPB</a>
     <a href="#">Rock</a>
     <a href="#">Samba</a>
-    <a href="#">Instrumental</a>
+    <a href="#">Jazz e Blues</a>
   </nav>
 
-  <div class="container">
-    <div class="faixa">
-      <h3>🎧 Faixa 1 - Ritmo Gitanno</h3>
-      <audio controls>
-        <source src="https://archive.org/download/gitanno-2025/faixa1.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-      </audio>
-    </div>
-
-    <div class="faixa">
-      <h3>🎧 Faixa 2 - Som do Coração</h3>
-      <audio controls>
-        <source src="https://archive.org/download/gitanno-2025/faixa2.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-      </audio>
-    </div>
-
-    <div class="faixa">
-      <h3>🎧 Faixa 3 - Samba dos Ventos</h3>
-      <audio controls>
-        <source src="https://archive.org/download/gitanno-2025/faixa3.mp3" type="audio/mpeg">
-        Seu navegador não suporta áudio.
-      </audio>
-    </div>
-  </div>
+  <main>
+    <h2>Bem-vindo ao acervo musical do projeto Gitanno Music ©</h2>
+    <p>Este site é dedicado à divulgação artística, com todos os direitos autorais preservados conforme as legislações vigentes. Todo o conteúdo aqui exposto é parte integrante do projeto Gitanno ©.</p>
+  </main>
 
   <footer>
-    Gitanno Music © 2025 — Projeto musical livre e gratuito
+    <p>Projeto Gitanno Music © - Todos os direitos reservados</p>
   </footer>
 </body>
 </html>
