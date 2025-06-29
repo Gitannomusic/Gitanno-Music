@@ -21,10 +21,15 @@
 
     header h1 {
       margin: 0;
-      font-size: 4.2rem;
+      font-size: 5.0rem; /* aumentada em 20% */
       font-weight: bold;
-      color: #DAA520;
-      text-shadow: 2px 2px 3px black;
+      color: #DAA520; /* dourado saxofone */
+      text-shadow:
+        2px 2px 0px black,
+       -2px 2px 0px black,
+        2px -2px 0px black,
+       -2px -2px 0px black,
+        0px 0px 6px black;
     }
 
     nav {
@@ -38,7 +43,7 @@
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1.3rem; /* aumentamos o tamanho da fonte em 30% */
+      font-size: 1.3rem; /* aumento de 30% */
       transition: background 0.3s;
     }
 
@@ -85,7 +90,7 @@
 </head>
 <body>
   <header>
-    <h1 style="text-shadow: 2px 2px 4px black;">Gitanno Music</h1>
+    <h1>Gitanno Music</h1>
   </header>
 
   <nav>
