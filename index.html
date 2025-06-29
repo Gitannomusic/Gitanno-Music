@@ -24,7 +24,8 @@
       font-size: 4.2rem;
       font-weight: bold;
       color: #DAA520;
-      text-shadow: 1px 1px 2px #000;
+      text-shadow: 2px 2px 4px #000;
+      -webkit-text-stroke: 1px black;
     }
 
     nav {
@@ -58,22 +59,22 @@
       position: fixed;
       bottom: 0;
       width: 100%;
+      text-align: left;
+      padding: 1rem;
+      font-size: 0.9rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      font-size: 0.9rem;
     }
 
     .footer-left {
-      text-align: left;
+      margin-left: 1rem;
     }
 
     .footer-right {
-      text-align: right;
+      margin-right: 1.5rem;
       font-weight: bold;
       font-size: 1.1rem;
-      padding-right: 1rem;
     }
   </style>
 </head>
@@ -96,8 +97,8 @@
   </main>
 
   <footer>
-    <div class="footer-left">Projeto Gitanno Music © - Todos os direitos reservados</div>
-    <div class="footer-right">Projeto e desenvolvimento: Gitanno©</div>
+    <span class="footer-left">Projeto Gitanno Music © - Todos os direitos reservados</span>
+    <span class="footer-right">Projeto de desenvolvimento por Gitanno©</span>
   </footer>
 </body>
 </html>
