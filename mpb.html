@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>MPB - Gitanno Music</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MPB | Gitanno Music</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
+      background-color: #f8f8f8;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     header {
-      background-color: #f2f2f2;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 20px;
+      background-color: #f0f0f0;
+      padding: 20px;
+      text-align: center;
     }
 
     header h1 {
@@ -26,32 +28,35 @@
       font-weight: bold;
     }
 
+    nav {
+      margin-top: 10px;
+    }
+
     nav a {
-      margin-left: 20px;
+      margin: 0 15px;
       text-decoration: none;
       color: #222;
       font-weight: bold;
-      font-size: 16px;
     }
 
     main {
-      padding: 40px 20px;
+      flex: 1;
+      padding: 40px 20px 60px;
       text-align: center;
     }
 
     footer {
-      background-color: rgba(0, 0, 0, 0.6);
+      background-color: black;
       color: white;
-      text-align: center;
-      padding: 10px;
       font-size: 14px;
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     audio {
       margin-top: 20px;
-      width: 70%;
     }
   </style>
 </head>
@@ -71,14 +76,14 @@
     <p><strong>Faixa de MPB - Rosa Passos</strong></p>
     <p><em>Azul</em></p>
     <audio controls>
-      <source src="rosa-passos-azul.mp3" type="audio/mpeg">
-      Seu navegador não suporta o player de áudio.
+      <source src="rosa-passos-azul.mp3" type="audio/mpeg" />
+      Seu navegador não suporta o elemento de áudio.
     </audio>
   </main>
 
   <footer>
-    <div>Projeto Gitanno Music© – Todos os direitos reservados</div>
-    <div>Projeto e desenvolvimento por Gitanno©</div>
+    <span>Projeto Gitanno Music© – Todos os direitos reservados</span>
+    <span>Projeto e desenvolvimento por Gitanno©</span>
   </footer>
 </body>
 </html>
