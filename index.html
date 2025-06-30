@@ -14,43 +14,36 @@
     }
 
     header {
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.3);
       padding: 1rem;
       text-align: center;
     }
 
     header h1 {
       margin: 0;
-      font-size: 5.0rem; /* aumentada em 20% */
+      font-size: 5.5rem;
       font-weight: bold;
       color: #DAA520;
-      text-shadow:
-        2px 2px 0px black,
-       -2px 2px 0px black,
-        2px -2px 0px black,
-       -2px -2px 0px black,
-        0px 0px 6px black;
+      text-shadow: 2px 2px 4px black;
     }
 
     nav {
       display: flex;
       justify-content: center;
-      background-color: rgba(0, 0, 0, 0.2);
+      background-color: rgba(0, 0, 0, 0.3);
     }
 
     nav a {
       padding: 1rem;
-      margin: 0 0.5rem; /* espaçamento entre botões */
       color: #fff;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.3rem;
-      cursor: pointer; /* cursor de ponteiro */
       transition: background 0.3s;
     }
 
     nav a:hover {
-      background-color: rgba(218, 165, 32, 0.3); /* dourado transparente */
+      background-color: #444;
     }
 
     main {
@@ -62,7 +55,7 @@
     }
 
     footer {
-      background-color: rgba(0, 0, 0, 0.15);
+      background-color: rgba(0, 0, 0, 0.2);
       position: fixed;
       bottom: 0;
       width: 100%;
@@ -92,14 +85,14 @@
 </head>
 <body>
   <header>
-    <h1>Gitanno Music</h1>
+    <h1 style="text-shadow: 2px 2px 4px black;">Gitanno Music</h1>
   </header>
 
   <nav>
     <a href="index.html">Início</a>
     <a href="mpb.html">MPB</a>
     <a href="rock.html">Rock</a>
-    <a href="jazz.html">Jazz e Blues</a>
+    <a href="jazz.html">Jazz & Blues</a>
   </nav>
 
   <main>
