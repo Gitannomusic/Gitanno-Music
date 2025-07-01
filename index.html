@@ -42,6 +42,12 @@
       transition: background 0.3s;
     }
 
+    /* --- MELHORIA 1: Indicador de página ativa --- */
+    nav a.active {
+      background-color: #555;
+      border-bottom: 2px solid #DAA520;
+    }
+
     nav a:hover {
       background-color: #444;
     }
@@ -57,42 +63,45 @@
       font-size: 1.1rem;
     }
 
+    /* --- MELHORIA 2: Footer modernizado com Flexbox --- */
     footer {
       background-color: rgba(0, 0, 0, 0.6);
       position: fixed;
       bottom: 0;
       width: 100%;
-      text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    .footer-left {
-      float: left;
-      margin-left: 2rem;
+    .footer-left, .footer-right {
+      margin: 0 2rem;
     }
 
-    .footer-right {
-      float: right;
-      margin-right: 2rem;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-
-    footer::after {
-      content: "";
-      display: table;
-      clear: both;
+    /* --- MELHORIA 3: Responsividade para mobile --- */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem; /* Título menor em mobile */
+      }
+      nav a {
+        padding: 0.8rem;
+        font-size: 1rem;
+      }
+      main {
+        margin: 3rem auto 2rem;
+        padding: 1rem;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1 style="text-shadow: 2px 2px 4px black;">Gitanno Music</h1>
+    <h1>Gitanno Music</h1> <!-- MELHORIA: Removido style inline -->
   </header>
 
   <nav>
-    <a href="index.html">Início</a>
+    <a href="index.html" class="active">Início</a> <!-- MELHORIA: Classe active -->
     <a href="mpb.html">MPB</a>
     <a href="rock.html">Rock</a>
     <a href="jazz.html">Jazz & Blues</a>
