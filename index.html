@@ -15,8 +15,8 @@
 
     header {
       background-color: rgba(0, 0, 0, 0.3);
-      padding: 1rem;
-      text-align: center;
+      padding: 1rem 1rem 1rem 2rem; /* Aumentado padding-left para 2rem */
+      text-align: left; /* Alinhamento à esquerda */
     }
 
     header h1 {
@@ -25,14 +25,15 @@
       font-weight: bold;
       color: #DAA520;
       text-shadow: 2px 2px 4px black;
+      padding-left: 0.5rem; /* Ajuste fino de alinhamento */
     }
 
     nav {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start; /* Alterado para alinhar à esquerda */
       align-items: center;
       background-color: rgba(0, 0, 0, 0.3);
-      padding: 0.5rem 1rem;
+      padding: 0.5rem 1rem 0.5rem 2rem; /* 2rem no left para alinhar com header */
       flex-wrap: wrap;
       gap: 10px;
     }
@@ -40,8 +41,9 @@
     .nav-links {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 5px;
+      margin-left: -0.5rem; /* Compensação para alinhamento perfeito */
     }
 
     .nav-links a {
@@ -130,14 +132,15 @@
     @media (max-width: 768px) {
       header h1 {
         font-size: 3rem;
+        padding-left: 0;
       }
       
-      nav {
-        flex-direction: column;
+      header, nav {
+        padding-left: 1rem; /* Reduz padding em mobile */
       }
       
       .nav-links {
-        margin-bottom: 10px;
+        margin-left: 0;
       }
       
       .search-separator {
