@@ -29,7 +29,7 @@
       color: white;
     }
 
-    /* BARRA DE NAVEGAÇÃO + TÍTULO "ACERVO DE ROCK" */
+    /* BARRA DE NAVEGAÇÃO */
     nav {
       background-color: #000;
       padding: 1rem;
@@ -42,29 +42,28 @@
     .nav-links {
       display: flex;
       gap: 1.5rem;
-      margin-bottom: 0.5rem; /* Espaço para o título */
     }
     .nav-links a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
-    .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+    .section-title-container {
+      text-align: center;
+      margin-top: 0.5rem;
     }
     .section-title {
       color: #DAA520;
-      font-size: 1.8rem; /* Fonte aumentada */
+      font-size: 1.8rem;
       margin: 0;
+      display: inline-block;
     }
 
     /* ÁREA DE MÚSICAS (4 COLUNAS) */
     main {
       flex: 1;
       padding: 2rem;
-      max-width: 1400px; /* Largura aumentada para mais colunas */
+      max-width: 1400px;
       margin: 0 auto;
       background-color: rgba(20, 20, 20, 0.8);
       border-radius: 5px;
@@ -72,7 +71,7 @@
     }
     .song-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* 4 colunas */
+      grid-template-columns: repeat(4, 1fr);
       gap: 1.5rem;
     }
     .song-card {
@@ -114,12 +113,12 @@
 
     /* RESPONSIVIDADE */
     @media (max-width: 1200px) {
-      .song-grid { grid-template-columns: repeat(3, 1fr); } /* 3 colunas em telas menores */
+      .song-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 768px) {
       header h1 { font-size: 1.8rem; }
-      .song-grid { grid-template-columns: 1fr; } /* 1 coluna em mobile */
-      .section-header { flex-direction: column; align-items: flex-start; }
+      .song-grid { grid-template-columns: 1fr; }
+      .nav-links { flex-direction: column; gap: 0.5rem; }
     }
   </style>
 </head>
@@ -132,15 +131,16 @@
   <!-- NAVEGAÇÃO + TÍTULO "ACERVO DE ROCK" -->
   <nav>
     <div class="nav-container">
-      <div class="section-header">
-        <div class="nav-links">
-          <a href="index.html">Início</a>
-          <a href="mpb.html">MPB</a>
-          <a href="rock.html">Rock</a>
-          <a href="jazz.html">Jazz e Blues</a>
-        </div>
-        <h2 class="section-title">Acervo de Rock</h2> <!-- Título alinhado com os botões -->
+      <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="mpb.html">MPB</a>
+        <a href="rock.html">Rock</a>
+        <a href="jazz.html">Jazz e Blues</a>
       </div>
+    </div>
+    <!-- TÍTULO CENTRALIZADO ABAIXO DO HEADER -->
+    <div class="section-title-container">
+      <h2 class="section-title">Acervo de Rock</h2>
     </div>
   </nav>
 
@@ -165,7 +165,7 @@
 
       <!-- Música 3 -->
       <div class="song-card">
-        <h3>Sweet Child O’Mine</h3>
+        <h3>Sweet Child O'Mine</h3>
         <p><strong>Artista:</strong> Guns N' Roses</p>
         <p><strong>Ano:</strong> 1987</p>
         <div class="player-placeholder">0:00 / 5:56</div>
