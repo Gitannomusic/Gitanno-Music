@@ -1,1 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resultados da Busca - Gitanno Music</title>
+  <style>
+    /* REUTILIZE O MESMO CSS DO INDEX (PARA MANTER CONSISTÊNCIA) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://images.cdn-files-a.com/ready_uploads/media/21710/2000_5cdbfb0af3246.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+    header, nav, footer {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+    /* ... (Cole AQUI TODO O CSS do index.html) ... */
 
+    /* ESTILOS ESPECÍFICOS DA PÁGINA DE BUSCA */
+    .results-container {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    .music-result {
+      background: rgba(0, 0, 0, 0.2);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+    .music-result:hover {
+      transform: translateX(5px);
+    }
+    .no-results {
+      text-align: center;
+      padding: 2rem;
+      color: #DAA520;
+    }
+  </style>
+</head>
+<body>
+  <!-- CABEÇALHO IDÊNTICO AO INDEX -->
+  <header>
+    <h1>Gitanno Music</h1>
+  </header>
+
+  <!-- NAVEGAÇÃO IDÊNTICA AO INDEX -->
+  <div class="nav-aligner">
+    <div class="nav-block">
+      <div class="nav-content">
+        <div class="nav-links">
+          <a href="index.html">Início</a>
+          <a href="mpb.html">MPB</a>
+          <a href="rock.html">Rock</a>
+          <a href="jazz.html">Jazz & Blues</a>
+        </div>
+        <span class="search-separator">ou</span>
+        <div class="search-container">
+          <form action="busca.html" method="GET">
+            <button type="submit">🔍 Buscar</button>
+            <input type="text" name="q" placeholder="música ou artista..." required>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ÁREA DE RESULTADOS -->
+  <main class="results-container">
+    <h2>Resultados para "<span id="search-term"></span>"</h2>
+    <div id="results">
+      <!-- Resultados serão inseridos aqui via JavaScript -->
+    </div>
+  </main>
+
+  <!-- RODAPÉ IDÊNTICO AO INDEX -->
+  <footer>
+    <div class="footer-left">Projeto Gitanno Music© – Todos os direitos reservados</div>
+    <div class="footer-right">Projeto e desenvolvimento por Gitanno©</div>
+  </footer>
+
+  <!-- JAVASCRIPT DE BUSCA -->
+  <script>
+    // Captura o termo da URL (ex: busca.html?q=rock)
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchTerm = urlParams.get('q').toLowerCase();
+    document.getElementById('search-term').textContent = searchTerm;
+
+    // Mock de dados (substitua pelo seu JSON real)
+    const musicDatabase = [
+      { title: "Aquarela do Brasil", artist: "Ary Barroso", genre: "MPB", file: "aquarela.mp3" },
+      { title: "Construção", artist: "Chico Buarque", genre: "MPB", file: "construcao.mp3" },
+      { title: "Bohemian Rhapsody", artist: "Queen", genre: "Rock", file: "bohemian.mp3" }
+    ];
+
+    // Filtra resultados
+    const filteredResults = musicDatabase.filter(item => 
+      item.title.toLowerCase().includes(searchTerm) || 
+      item.artist.toLowerCase().includes(searchTerm)
+    );
+
+    // Exibe resultados
+    const resultsDiv = document.getElementById('results');
+    if (filteredResults.length > 0) {
+      filteredResults.forEach(item => {
+        resultsDiv.innerHTML += `
+          <div class="music-result">
+            <h3>${item.title}</h3>
+            <p><strong>Artista:</strong> ${item.artist} | <strong>Gênero:</strong> ${item.genre}</p>
+            <audio controls src="musicas/${item.file}"></audio>
+          </div>
+        `;
+      });
+    } else {
+      resultsDiv.innerHTML = `
+        <div class="no-results">
+          <p>Nenhum resultado encontrado para "<strong>${searchTerm}</strong>".</p>
+          <a href="index.html">Voltar</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
