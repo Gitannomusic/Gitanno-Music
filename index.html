@@ -16,7 +16,7 @@
     header {
       background-color: rgba(0, 0, 0, 0.3);
       padding: 1rem;
-      text-align: center; /* Título centralizado */
+      text-align: center;
     }
 
     header h1 {
@@ -34,12 +34,12 @@
       justify-content: center;
     }
 
-    /* BLOCO DE NAVEGAÇÃO (será deslocado) */
+    /* BLOCO DE NAVEGAÇÃO */
     .nav-block {
       background-color: rgba(0, 0, 0, 0.3);
-      padding: 0.5rem 2rem; /* Ajuste horizontal */
-      margin-left: 8.5%; /* Valor mágico para alinhar com a letra "G" */
-      transform: translateX(-50px); /* Ajuste fino pixel-perfect */
+      padding: 0.5rem 2rem;
+      margin-left: 8.5%;
+      transform: translateX(-50px);
     }
 
     .nav-content {
@@ -91,6 +91,12 @@
       background: rgba(255, 255, 255, 0.2);
       color: white;
       outline: none;
+    }
+
+    /* PLACEHOLDER BRANCO E NÍTIDO */
+    .search-container input::placeholder {
+      color: white; /* Branco puro */
+      opacity: 0.9; /* Levemente translúcido */
     }
 
     /* SEÇÃO PRINCIPAL */
