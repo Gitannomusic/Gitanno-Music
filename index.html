@@ -27,17 +27,19 @@
       text-shadow: 2px 2px 4px black;
     }
 
-    /* CONTÊINER PARA ALINHAR BOTÕES COM A LETRA "G" */
-    .nav-container {
+    /* CONTÊINER PARA ALINHAMENTO PRECISO */
+    .nav-aligner {
       width: 100%;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding-left: 2rem; /* Ajuste fino para alinhamento */
+      display: flex;
+      justify-content: center;
     }
 
-    nav {
+    /* BLOCO DE NAVEGAÇÃO (será deslocado) */
+    .nav-block {
       background-color: rgba(0, 0, 0, 0.3);
-      padding: 0.5rem 0;
+      padding: 0.5rem 2rem; /* Ajuste horizontal */
+      margin-left: 8.5%; /* Valor mágico para alinhar com a letra "G" */
+      transform: translateX(-50px); /* Ajuste fino pixel-perfect */
     }
 
     .nav-content {
@@ -91,19 +93,19 @@
       outline: none;
     }
 
-    /* SEÇÃO PRINCIPAL (RESTAURADA) */
+    /* SEÇÃO PRINCIPAL */
     main {
       padding: 1.5rem 2rem;
       background-color: rgba(0, 0, 0, 0.05);
       max-width: 750px;
-      margin: 6rem auto 2rem; /* Centralizado */
+      margin: 6rem auto 2rem;
       border-radius: 10px;
       color: #DAA520;
       text-shadow: 1px 1px 2px black;
       font-size: 1.1rem;
     }
 
-    /* RODAPÉ (RESTAURADO) */
+    /* RODAPÉ */
     footer {
       background-color: rgba(0, 0, 0, 0.6);
       position: fixed;
@@ -123,8 +125,10 @@
       header h1 {
         font-size: 3rem;
       }
-      .nav-container {
-        padding-left: 1rem;
+      .nav-block {
+        margin-left: 0;
+        transform: none;
+        padding: 0.5rem 1rem;
       }
       .search-separator {
         display: none;
@@ -141,9 +145,9 @@
     <h1>Gitanno Music</h1>
   </header>
 
-  <!-- NAVEGAÇÃO (Botões alinhados com a letra "G") -->
-  <nav>
-    <div class="nav-container">
+  <!-- NAVEGAÇÃO (Bloco deslocado para alinhar "Início" com "G") -->
+  <div class="nav-aligner">
+    <div class="nav-block">
       <div class="nav-content">
         <div class="nav-links">
           <a href="index.html" class="active">Início</a>
@@ -162,9 +166,9 @@
         </div>
       </div>
     </div>
-  </nav>
+  </div>
 
-  <!-- CONTEÚDO PRINCIPAL (RESTAURADO) -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <h2 style="margin-top: 2rem;">Bem-vindo ao acervo musical do projeto Gitanno Music©</h2>
     <p>
@@ -173,7 +177,7 @@
     </p>
   </main>
 
-  <!-- RODAPÉ (RESTAURADO) -->
+  <!-- RODAPÉ -->
   <footer>
     <div class="footer-left">Projeto Gitanno Music© – Todos os direitos reservados</div>
     <div class="footer-right">Projeto e desenvolvimento por Gitanno©</div>
