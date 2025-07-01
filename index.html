@@ -25,42 +25,24 @@
       font-weight: bold;
       color: #DAA520;
       text-shadow: 2px 2px 4px black;
-      position: relative; /* Para alinhar os botões */
     }
 
-    /* CONTÊINER INVISÍVEL PARA ALINHAMENTO */
-    .alignment-container {
+    /* CONTÊINER PARA ALINHAR BOTÕES COM A LETRA "G" */
+    .nav-container {
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-    }
-
-    /* LINHA DE ALINHAMENTO (pode remover depois de testar) */
-    .alignment-guide {
-      position: absolute;
-      left: calc(50% - 600px + 2rem); /* Ajuste fino */
-      top: 0;
-      width: 2px;
-      height: 100vh;
-      background: red;
-      z-index: 1000;
-      display: none; /* Desative depois de ajustar */
+      padding-left: 2rem; /* Ajuste fino para alinhamento */
     }
 
     nav {
       background-color: rgba(0, 0, 0, 0.3);
       padding: 0.5rem 0;
-      display: flex;
-      justify-content: center;
     }
 
     .nav-content {
       display: flex;
-      justify-content: flex-start; /* Alinha à esquerda */
       align-items: center;
-      width: calc(100% - 4rem);
-      max-width: 1200px;
-      margin-left: calc(50% - 600px + 2rem); /* Mágica do alinhamento */
       flex-wrap: wrap;
       gap: 10px;
     }
@@ -109,38 +91,92 @@
       outline: none;
     }
 
-    /* ... (mantenha o resto do CSS igual) ... */
+    /* SEÇÃO PRINCIPAL (RESTAURADA) */
+    main {
+      padding: 1.5rem 2rem;
+      background-color: rgba(0, 0, 0, 0.05);
+      max-width: 750px;
+      margin: 6rem auto 2rem; /* Centralizado */
+      border-radius: 10px;
+      color: #DAA520;
+      text-shadow: 1px 1px 2px black;
+      font-size: 1.1rem;
+    }
 
+    /* RODAPÉ (RESTAURADO) */
+    footer {
+      background-color: rgba(0, 0, 0, 0.6);
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-left, .footer-right {
+      margin: 0 2rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 3rem;
+      }
+      .nav-container {
+        padding-left: 1rem;
+      }
+      .search-separator {
+        display: none;
+      }
+      .search-container input {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
+  <!-- CABEÇALHO (Título centralizado) -->
   <header>
     <h1>Gitanno Music</h1>
-    <div class="alignment-container">
-      <div class="alignment-guide"></div> <!-- Linha-guia (remova depois) -->
-    </div>
   </header>
 
+  <!-- NAVEGAÇÃO (Botões alinhados com a letra "G") -->
   <nav>
-    <div class="nav-content">
-      <div class="nav-links">
-        <a href="index.html" class="active">Início</a>
-        <a href="mpb.html">MPB</a>
-        <a href="rock.html">Rock</a>
-        <a href="jazz.html">Jazz & Blues</a>
-      </div>
-      
-      <span class="search-separator">ou</span>
-      
-      <div class="search-container">
-        <form action="busca.html" method="GET">
-          <button type="submit">🔍 Buscar</button>
-          <input type="text" name="q" placeholder="música ou artista..." required>
-        </form>
+    <div class="nav-container">
+      <div class="nav-content">
+        <div class="nav-links">
+          <a href="index.html" class="active">Início</a>
+          <a href="mpb.html">MPB</a>
+          <a href="rock.html">Rock</a>
+          <a href="jazz.html">Jazz & Blues</a>
+        </div>
+        
+        <span class="search-separator">ou</span>
+        
+        <div class="search-container">
+          <form action="busca.html" method="GET">
+            <button type="submit">🔍 Buscar</button>
+            <input type="text" name="q" placeholder="música ou artista..." required>
+          </form>
+        </div>
       </div>
     </div>
   </nav>
 
-  <!-- ... (mantenha o resto do HTML) ... -->
+  <!-- CONTEÚDO PRINCIPAL (RESTAURADO) -->
+  <main>
+    <h2 style="margin-top: 2rem;">Bem-vindo ao acervo musical do projeto Gitanno Music©</h2>
+    <p>
+      Este site é dedicado à divulgação artística, com todos os direitos autorais preservados conforme as legislações vigentes.
+      <strong>O uso indevido ou gravação não autorizada por terceiros não é de responsabilidade do projeto.</strong>
+    </p>
+  </main>
+
+  <!-- RODAPÉ (RESTAURADO) -->
+  <footer>
+    <div class="footer-left">Projeto Gitanno Music© – Todos os direitos reservados</div>
+    <div class="footer-right">Projeto e desenvolvimento por Gitanno©</div>
+  </footer>
 </body>
 </html>
