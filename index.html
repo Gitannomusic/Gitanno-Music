@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" style="scroll-behavior: smooth;">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -19,12 +19,18 @@
       text-align: center;
     }
 
+    /* 1. EFEITO DE "RESPIRAÇÃO" NO TÍTULO */
     header h1 {
       margin: 0;
       font-size: 5.5rem;
       font-weight: bold;
       color: #DAA520;
       text-shadow: 2px 2px 4px black;
+      animation: breathe 3s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
     }
 
     /* CONTÊINER PARA ALINHAMENTO PRECISO */
@@ -49,22 +55,24 @@
       gap: 10px;
     }
 
+    /* 3. SOMBRA DINÂMICA NOS BOTÕES */
     .nav-links a {
       padding: 1rem;
       color: #fff;
       text-decoration: none;
       font-weight: bold;
       font-size: 1.3rem;
-      transition: background 0.3s;
+      transition: all 0.3s;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
-
     .nav-links a.active {
       background-color: #555;
       border-bottom: 2px solid #DAA520;
     }
-
     .nav-links a:hover {
       background-color: #444;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transform: translateY(-2px);
     }
 
     .search-separator {
@@ -93,10 +101,14 @@
       outline: none;
     }
 
-    /* PLACEHOLDER BRANCO E NÍTIDO */
+    /* 4. PLACEHOLDER ANIMADO */
     .search-container input::placeholder {
-      color: white; /* Branco puro */
-      opacity: 0.9; /* Levemente translúcido */
+      color: white;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+    .search-container input:focus::placeholder {
+      opacity: 0.5;
     }
 
     /* SEÇÃO PRINCIPAL */
