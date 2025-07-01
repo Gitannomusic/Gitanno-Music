@@ -4,83 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rock - Gitanno Music</title>
-  <!-- COLE AQUI O MESMO CSS DA PÁGINA DE BUSCA -->
   <style>
-    /* ... (mesmo CSS do busca.html) ... */
-    
-    /* ESTILOS ESPECÍFICOS DO CATÁLOGO */
+    /* MESMO CSS DA PÁGINA DE BUSCA (MANTIDO INTEGRALMENTE) */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(to right, #000, #DAA520, #000);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+    }
+    nav {
+      background-color: #000;
+      padding: 1rem;
+      border-bottom: 1px solid #DAA520;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-right: 1rem;
+      font-weight: bold;
+    }
+    .nav-links a.active {
+      color: #DAA520;
+    }
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: rgba(20, 20, 20, 0.8);
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    footer {
+      background: linear-gradient(to right, #000, #DAA520, #000);
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+    }
+
+    /* ESTILOS ADICIONAIS PARA O CATÁLOGO (MESMA ELEGÂNCIA DA PÁGINA DE BUSCA) */
     .music-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 1rem;
       margin-top: 2rem;
     }
-    .music-card {
-      background: rgba(30, 30, 30, 0.7);
-      padding: 1rem;
+    .music-item {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      margin-bottom: 1rem;
       border-radius: 5px;
       border-left: 3px solid #DAA520;
     }
-    .music-card h3 {
+    .music-item h3 {
       color: #DAA520;
       margin-top: 0;
+    }
+    .music-info {
+      color: #ccc;
+      margin: 0.5rem 0;
+    }
+    audio {
+      width: 100%;
+      margin-top: 0.5rem;
+      filter: sepia(20%) saturate(70%) grayscale(1) contrast(99%) invert(12%);
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      .nav-container { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO (igual ao busca.html) -->
+  <!-- CABEÇALHO (IGUAL À PÁGINA DE BUSCA) -->
   <header>
     <h1>Gitanno Music</h1>
   </header>
 
-  <!-- NAVEGAÇÃO (ativa no link "Rock") -->
+  <!-- NAVEGAÇÃO (DESTACANDO "ROCK" NO MENU) -->
   <nav>
     <div class="nav-container">
       <div class="nav-links">
         <a href="index.html">Início</a>
         <a href="mpb.html">MPB</a>
-        <a href="rock.html" style="color: #DAA520;">Rock</a>
+        <a href="rock.html" class="active">Rock</a>
         <a href="jazz.html">Jazz & Blues</a>
       </div>
     </div>
   </nav>
 
-  <!-- CONTEÚDO ESPECÍFICO -->
+  <!-- CONTEÚDO (MESMO PADRÃO VISUAL DA PÁGINA DE BUSCA) -->
   <main>
     <h2 style="color: #DAA520;">Acervo de Rock</h2>
     
     <div class="music-list">
-      <!-- EXEMPLO COM 3 MÚSICAS -->
-      <div class="music-card">
+      <!-- MÚSICA 1 -->
+      <div class="music-item">
         <h3>Bohemian Rhapsody</h3>
-        <p><strong>Artista:</strong> Queen</p>
-        <p><strong>Ano:</strong> 1975</p>
-        <audio controls style="width: 100%; margin-top: 0.5rem;">
+        <div class="music-info">
+          <strong>Artista:</strong> Queen | <strong>Ano:</strong> 1975 | <strong>Duração:</strong> 5:55
+        </div>
+        <audio controls>
           <source src="musicas/queen-bohemian.mp3" type="audio/mpeg">
         </audio>
       </div>
 
-      <div class="music-card">
+      <!-- MÚSICA 2 -->
+      <div class="music-item">
         <h3>Sweet Child O'Mine</h3>
-        <p><strong>Artista:</strong> Guns N' Roses</p>
-        <p><strong>Ano:</strong> 1987</p>
-        <audio controls style="width: 100%; margin-top: 0.5rem;">
+        <div class="music-info">
+          <strong>Artista:</strong> Guns N' Roses | <strong>Ano:</strong> 1987 | <strong>Duração:</strong> 5:56
+        </div>
+        <audio controls>
           <source src="musicas/guns-sweet.mp3" type="audio/mpeg">
         </audio>
       </div>
 
-      <div class="music-card">
+      <!-- MÚSICA 3 -->
+      <div class="music-item">
         <h3>Smells Like Teen Spirit</h3>
-        <p><strong>Artista:</strong> Nirvana</p>
-        <p><strong>Ano:</strong> 1991</p>
-        <audio controls style="width: 100%; margin-top: 0.5rem;">
+        <div class="music-info">
+          <strong>Artista:</strong> Nirvana | <strong>Ano:</strong> 1991 | <strong>Duração:</strong> 5:01
+        </div>
+        <audio controls>
           <source src="musicas/nirvana-smells.mp3" type="audio/mpeg">
         </audio>
       </div>
     </div>
   </main>
 
-  <!-- RODAPÉ (igual ao busca.html) -->
+  <!-- RODAPÉ (IGUAL À PÁGINA DE BUSCA) -->
   <footer>
     <div class="footer-content">
       <div>Projeto Gitanno Music© – Todos os direitos reservados</div>
