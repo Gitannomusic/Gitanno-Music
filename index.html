@@ -55,7 +55,7 @@
       gap: 10px;
     }
 
-    /* 3. SOMBRA DINÂMICA NOS BOTÕES */
+    /* 3. SOMBRA DINÂMICA NOS BOTÕES - ÚNICA ALTERAÇÃO REALIZADA */
     .nav-links a {
       padding: 1rem;
       color: #fff;
@@ -64,13 +64,15 @@
       font-size: 1.3rem;
       transition: all 0.3s;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      border-radius: 30px; /* Adicionado canto arredondado */
+      background-color: rgba(0,0,0,0.5); /* Fundo levemente escuro */
     }
     .nav-links a.active {
-      background-color: #555;
+      background-color: rgba(218, 165, 32, 0.7); /* Dourado para ativo */
       border-bottom: 2px solid #DAA520;
     }
     .nav-links a:hover {
-      background-color: #444;
+      background-color: rgba(218, 165, 32, 0.5); /* Dourado no hover */
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
       transform: translateY(-2px);
     }
