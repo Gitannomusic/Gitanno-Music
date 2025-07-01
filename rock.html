@@ -59,7 +59,7 @@
       display: inline-block;
     }
 
-    /* ÁREA DE MÚSICAS (4 COLUNAS) - VERSÃO TURBO */
+    /* ÁREA DE MÚSICAS (4 COLUNAS) */
     main {
       flex: 1;
       padding: 2rem;
@@ -87,11 +87,11 @@
     .song-card h3 {
       color: #fff;
       margin: 0;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
     .artist {
       color: #DAA520;
-      margin: 0.3rem 0 1rem 0;
+      margin: 0.5rem 0;
       font-weight: bold;
     }
     .player {
@@ -101,22 +101,28 @@
       background: #DAA520;
       border: none;
       color: #000;
-      padding: 0.3rem 0.8rem;
-      border-radius: 15px;
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
       cursor: pointer;
       font-weight: bold;
+      font-size: 1rem;
+      transition: all 0.3s;
     }
-    .copy-btn {
+    .play-btn:hover {
+      background: #ffc107;
+    }
+    .copy-link-btn {
       background: transparent;
       border: 1px solid #DAA520;
       color: #DAA520;
       width: 100%;
-      padding: 0.3rem;
-      border-radius: 3px;
+      padding: 0.5rem;
+      border-radius: 5px;
       cursor: pointer;
+      margin-top: 0.5rem;
       transition: all 0.3s;
     }
-    .copy-btn:hover {
+    .copy-link-btn:hover {
       background: rgba(218, 165, 32, 0.2);
     }
 
@@ -175,11 +181,12 @@
         <h3>Bohemian Rhapsody</h3>
         <p class="artist">Queen</p>
         <div class="player">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 5:55</span>
+          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/bohemian.mp3')">
+            ▶ Ouvir Agora
+          </button>
         </div>
-        <button class="copy-btn" onclick="copySong('Bohemian Rhapsody - Queen')">
-          Copiar Nome
+        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/bohemian.mp3')">
+          Copiar Link
         </button>
       </div>
 
@@ -188,11 +195,12 @@
         <h3>Hotel California</h3>
         <p class="artist">Eagles</p>
         <div class="player">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 6:30</span>
+          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/hotel-california.mp3')">
+            ▶ Ouvir Agora
+          </button>
         </div>
-        <button class="copy-btn" onclick="copySong('Hotel California - Eagles')">
-          Copiar Nome
+        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/hotel-california.mp3')">
+          Copiar Link
         </button>
       </div>
 
@@ -201,11 +209,12 @@
         <h3>Sweet Child O'Mine</h3>
         <p class="artist">Guns N' Roses</p>
         <div class="player">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 5:56</span>
+          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/sweet-child.mp3')">
+            ▶ Ouvir Agora
+          </button>
         </div>
-        <button class="copy-btn" onclick="copySong('Sweet Child O\'Mine - Guns N\' Roses')">
-          Copiar Nome
+        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/sweet-child.mp3')">
+          Copiar Link
         </button>
       </div>
 
@@ -214,11 +223,12 @@
         <h3>Back in Black</h3>
         <p class="artist">AC/DC</p>
         <div class="player">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 4:15</span>
+          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/back-in-black.mp3')">
+            ▶ Ouvir Agora
+          </button>
         </div>
-        <button class="copy-btn" onclick="copySong('Back in Black - AC/DC')">
-          Copiar Nome
+        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/back-in-black.mp3')">
+          Copiar Link
         </button>
       </div>
 
@@ -227,11 +237,12 @@
         <h3>Smells Like Teen Spirit</h3>
         <p class="artist">Nirvana</p>
         <div class="player">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 5:01</span>
+          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/smells-like-teen-spirit.mp3')">
+            ▶ Ouvir Agora
+          </button>
         </div>
-        <button class="copy-btn" onclick="copySong('Smells Like Teen Spirit - Nirvana')">
-          Copiar Nome
+        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/smells-like-teen-spirit.mp3')">
+          Copiar Link
         </button>
       </div>
 
@@ -240,11 +251,12 @@
         <h3>Imagine</h3>
         <p class="artist">John Lennon</p>
         <div class="player">
-          <button class="play-btn">▶</button>
-          <span class="time">0:00 / 3:04</span>
+          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/imagine.mp3')">
+            ▶ Ouvir Agora
+          </button>
         </div>
-        <button class="copy-btn" onclick="copySong('Imagine - John Lennon')">
-          Copiar Nome
+        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/imagine.mp3')">
+          Copiar Link
         </button>
       </div>
     </div>
@@ -258,12 +270,19 @@
     </div>
   </footer>
 
-  <!-- SCRIPT PARA COPIAR -->
+  <!-- SCRIPTS -->
   <script>
-    function copySong(text) {
-      navigator.clipboard.writeText(text)
-        .then(() => alert("Música copiada: " + text))
-        .catch(err => console.error("Erro ao copiar:", err));
+    // FUNÇÃO PARA TOCAR MÚSICA
+    function playSong(url) {
+      const audio = new Audio(url);
+      audio.play().catch(e => alert("Clique para permitir áudio"));
+    }
+
+    // FUNÇÃO PARA COPIAR LINK
+    function copyLink(url) {
+      navigator.clipboard.writeText(url)
+        .then(() => alert("Link copiado!\n" + url))
+        .catch(() => prompt("Copie manualmente:", url));
     }
   </script>
 </body>
