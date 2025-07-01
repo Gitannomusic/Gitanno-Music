@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acervo de Rock - Gitanno Music</title>
   <style>
     /* RESET E FONTE */
@@ -59,7 +59,7 @@
       display: inline-block;
     }
 
-    /* ÁREA DE MÚSICAS (4 COLUNAS) */
+    /* ÁREA DE MÚSICAS (4 COLUNAS) - VERSÃO TURBO */
     main {
       flex: 1;
       padding: 2rem;
@@ -76,24 +76,48 @@
     }
     .song-card {
       background: rgba(0, 0, 0, 0.3);
-      padding: 1.5rem;
+      padding: 1.2rem;
       border-radius: 5px;
+      text-align: center;
       transition: transform 0.3s;
     }
     .song-card:hover {
       transform: translateY(-5px);
     }
     .song-card h3 {
-      color: #DAA520;
-      margin-top: 0;
+      color: #fff;
+      margin: 0;
+      font-size: 1.1rem;
     }
-    .song-card p {
-      margin: 0.5rem 0;
-      color: #ccc;
-    }
-    .player-placeholder {
+    .artist {
       color: #DAA520;
-      font-size: 0.9rem;
+      margin: 0.3rem 0 1rem 0;
+      font-weight: bold;
+    }
+    .player {
+      margin: 1rem 0;
+    }
+    .play-btn {
+      background: #DAA520;
+      border: none;
+      color: #000;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .copy-btn {
+      background: transparent;
+      border: 1px solid #DAA520;
+      color: #DAA520;
+      width: 100%;
+      padding: 0.3rem;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .copy-btn:hover {
+      background: rgba(218, 165, 32, 0.2);
     }
 
     /* RODAPÉ */
@@ -138,7 +162,6 @@
         <a href="jazz.html">Jazz e Blues</a>
       </div>
     </div>
-    <!-- TÍTULO CENTRALIZADO ABAIXO DO HEADER -->
     <div class="section-title-container">
       <h2 class="section-title">Acervo de Rock</h2>
     </div>
@@ -150,49 +173,79 @@
       <!-- Música 1 -->
       <div class="song-card">
         <h3>Bohemian Rhapsody</h3>
-        <p><strong>Artista:</strong> Queen</p>
-        <p><strong>Ano:</strong> 1975</p>
-        <div class="player-placeholder">0:00 / 5:55</div>
+        <p class="artist">Queen</p>
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 5:55</span>
+        </div>
+        <button class="copy-btn" onclick="copySong('Bohemian Rhapsody - Queen')">
+          Copiar Nome
+        </button>
       </div>
 
       <!-- Música 2 -->
       <div class="song-card">
         <h3>Hotel California</h3>
-        <p><strong>Artista:</strong> Eagles</p>
-        <p><strong>Ano:</strong> 1976</p>
-        <div class="player-placeholder">0:00 / 6:30</div>
+        <p class="artist">Eagles</p>
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 6:30</span>
+        </div>
+        <button class="copy-btn" onclick="copySong('Hotel California - Eagles')">
+          Copiar Nome
+        </button>
       </div>
 
       <!-- Música 3 -->
       <div class="song-card">
         <h3>Sweet Child O'Mine</h3>
-        <p><strong>Artista:</strong> Guns N' Roses</p>
-        <p><strong>Ano:</strong> 1987</p>
-        <div class="player-placeholder">0:00 / 5:56</div>
+        <p class="artist">Guns N' Roses</p>
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 5:56</span>
+        </div>
+        <button class="copy-btn" onclick="copySong('Sweet Child O\'Mine - Guns N\' Roses')">
+          Copiar Nome
+        </button>
       </div>
 
       <!-- Música 4 -->
       <div class="song-card">
         <h3>Back in Black</h3>
-        <p><strong>Artista:</strong> AC/DC</p>
-        <p><strong>Ano:</strong> 1980</p>
-        <div class="player-placeholder">0:00 / 4:15</div>
+        <p class="artist">AC/DC</p>
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 4:15</span>
+        </div>
+        <button class="copy-btn" onclick="copySong('Back in Black - AC/DC')">
+          Copiar Nome
+        </button>
       </div>
 
       <!-- Música 5 -->
       <div class="song-card">
         <h3>Smells Like Teen Spirit</h3>
-        <p><strong>Artista:</strong> Nirvana</p>
-        <p><strong>Ano:</strong> 1991</p>
-        <div class="player-placeholder">0:00 / 5:01</div>
+        <p class="artist">Nirvana</p>
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 5:01</span>
+        </div>
+        <button class="copy-btn" onclick="copySong('Smells Like Teen Spirit - Nirvana')">
+          Copiar Nome
+        </button>
       </div>
 
       <!-- Música 6 -->
       <div class="song-card">
         <h3>Imagine</h3>
-        <p><strong>Artista:</strong> John Lennon</p>
-        <p><strong>Ano:</strong> 1971</p>
-        <div class="player-placeholder">0:00 / 3:04</div>
+        <p class="artist">John Lennon</p>
+        <div class="player">
+          <button class="play-btn">▶</button>
+          <span class="time">0:00 / 3:04</span>
+        </div>
+        <button class="copy-btn" onclick="copySong('Imagine - John Lennon')">
+          Copiar Nome
+        </button>
       </div>
     </div>
   </main>
@@ -204,5 +257,14 @@
       <div>Desenvolvido por Gitanno©</div>
     </div>
   </footer>
+
+  <!-- SCRIPT PARA COPIAR -->
+  <script>
+    function copySong(text) {
+      navigator.clipboard.writeText(text)
+        .then(() => alert("Música copiada: " + text))
+        .catch(err => console.error("Erro ao copiar:", err));
+    }
+  </script>
 </body>
 </html>
