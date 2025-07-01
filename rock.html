@@ -1,176 +1,200 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gitanno Music - Rock</title>
-    <style>
-        /* Estilos Globais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        body {
-            background: linear-gradient(135deg, #121212 0%, #1e1e1e 100%);
-            color: #fff;
-            min-height: 100vh;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acervo de Rock - Gitanno Music</title>
+  <style>
+    /* RESET E FONTE */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111; /* Fundo escuro neutro */
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        /* Header Alinhado à Esquerda */
-        header {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 1.5rem 2rem;
-            border-bottom: 2px solid #ff5500;
-        }
-        h1 {
-            font-size: 2.5rem;
-            color: #ffaa00;
-            margin-bottom: 1rem;
-        }
-        .nav-buttons {
-            display: flex;
-            gap: 1.5rem;
-        }
-        .nav-buttons a {
-            color: #ddd;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        .nav-buttons a:hover {
-            color: #ff5500;
-        }
+    /* CABEÇALHO */
+    header {
+      background: linear-gradient(to right, #000, #DAA520, #000);
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: white;
+    }
 
-        /* Seção do Acervo de Rock */
-        .main-content {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-        .section-title {
-            font-size: 1.8rem;
-            color: #ffaa00;
-            margin-bottom: 1.5rem;
-            border-left: 4px solid #ff5500;
-            padding-left: 1rem;
-        }
-        .song-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-        .song-card {
-            background: rgba(30, 30, 30, 0.7);
-            border-radius: 8px;
-            padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .song-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 15px rgba(255, 85, 0, 0.2);
-        }
-        .song-card h3 {
-            color: #ffaa00;
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-        .song-card p {
-            color: #aaa;
-            margin-bottom: 0.3rem;
-            font-size: 0.9rem;
-        }
-        .player-placeholder {
-            color: #ff5500;
-            font-size: 0.8rem;
-            margin-top: 0.5rem;
-        }
+    /* BARRA DE NAVEGAÇÃO */
+    nav {
+      background-color: #000;
+      padding: 1rem;
+      border-bottom: 1px solid #DAA520;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      margin-right: 1rem;
+      font-weight: bold;
+    }
 
-        /* Rodapé */
-        footer {
-            background: rgba(0, 0, 0, 0.9);
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            border-top: 2px solid #ff5500;
-        }
-        footer p {
-            color: #777;
-            font-size: 0.9rem;
-        }
-    </style>
+    /* ÁREA DE CONTEÚDO (ACERVO DE ROCK) */
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: rgba(20, 20, 20, 0.8);
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    .section-title {
+      color: #DAA520;
+      margin-bottom: 2rem;
+      border-left: 3px solid #DAA520;
+      padding-left: 1rem;
+    }
+    .song-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .song-card {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      border-radius: 5px;
+      transition: transform 0.3s;
+    }
+    .song-card:hover {
+      transform: translateY(-5px);
+    }
+    .song-card h3 {
+      color: #DAA520;
+      margin-top: 0;
+    }
+    .song-card p {
+      margin: 0.5rem 0;
+      color: #ccc;
+    }
+    .player-placeholder {
+      color: #DAA520;
+      font-size: 0.9rem;
+    }
+
+    /* RODAPÉ */
+    footer {
+      background: linear-gradient(to right, #000, #DAA520, #000);
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto; /* Fixação sem final */
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      color: white;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.8rem; }
+      .nav-container { flex-direction: column; }
+      .song-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header com botões à esquerda -->
-    <header>
-        <h1>Gitanno Music</h1>
-        <div class="nav-buttons">
-            <a href="index.html">Início</a>
-            <a href="mpb.html">MPB</a>
-            <a href="rock.html">Rock</a>
-            <a href="jazz-blues.html">Jazz & Blues</a>
-        </div>
-    </header>
+  <!-- CABEÇALHO SIMPLIFICADO -->
+  <header>
+    <h1>Gitanno Music</h1>
+  </header>
 
-    <!-- Conteúdo Principal (Acervo de Rock) -->
-    <div class="main-content">
-        <h2 class="section-title">Acervo de Rock</h2>
-        <div class="song-grid">
-            <!-- Música 1 -->
-            <div class="song-card">
-                <h3>Bohemian Rhapsody</h3>
-                <p><strong>Artista:</strong> Queen</p>
-                <p><strong>Ano:</strong> 1975</p>
-                <div class="player-placeholder">0:00 / 5:55</div>
-            </div>
+  <!-- NAVEGAÇÃO -->
+  <nav>
+    <div class="nav-container">
+      <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="mpb.html">MPB</a>
+        <a href="rock.html">Rock</a>
+        <a href="jazz.html">Jazz e Blues</a>
+      </div>
+    </div>
+  </nav>
 
-            <!-- Música 2 -->
-            <div class="song-card">
-                <h3>Hotel California</h3>
-                <p><strong>Artista:</strong> Eagles</p>
-                <p><strong>Ano:</strong> 1976</p>
-                <div class="player-placeholder">0:00 / 6:30</div>
-            </div>
-
-            <!-- Música 3 -->
-            <div class="song-card">
-                <h3>Sweet Child O’Mine</h3>
-                <p><strong>Artista:</strong> Guns N' Roses</p>
-                <p><strong>Ano:</strong> 1987</p>
-                <div class="player-placeholder">0:00 / 5:56</div>
-            </div>
-
-            <!-- Música 4 -->
-            <div class="song-card">
-                <h3>Back in Black</h3>
-                <p><strong>Artista:</strong> AC/DC</p>
-                <p><strong>Ano:</strong> 1980</p>
-                <div class="player-placeholder">0:00 / 4:15</div>
-            </div>
-
-            <!-- Música 5 -->
-            <div class="song-card">
-                <h3>Smells Like Teen Spirit</h3>
-                <p><strong>Artista:</strong> Nirvana</p>
-                <p><strong>Ano:</strong> 1991</p>
-                <div class="player-placeholder">0:00 / 5:01</div>
-            </div>
-
-            <!-- Música 6 -->
-            <div class="song-card">
-                <h3>Imagine</h3>
-                <p><strong>Artista:</strong> John Lennon</p>
-                <p><strong>Ano:</strong> 1971</p>
-                <div class="player-placeholder">0:00 / 3:04</div>
-            </div>
-        </div>
+  <!-- CONTEÚDO PRINCIPAL (ACERVO DE ROCK) -->
+  <main>
+    <div class="section-title">
+      <h2>Acervo de Rock</h2>
     </div>
 
-    <!-- Rodapé -->
-    <footer>
-        <p>Projeto Gitanno Music© – Todos os direitos reservados</p>
-        <p>Desenvolvido por Gitanno®</p>
-    </footer>
+    <div class="song-grid">
+      <!-- Música 1 -->
+      <div class="song-card">
+        <h3>Bohemian Rhapsody</h3>
+        <p><strong>Artista:</strong> Queen</p>
+        <p><strong>Ano:</strong> 1975</p>
+        <div class="player-placeholder">0:00 / 5:55</div>
+      </div>
+
+      <!-- Música 2 -->
+      <div class="song-card">
+        <h3>Hotel California</h3>
+        <p><strong>Artista:</strong> Eagles</p>
+        <p><strong>Ano:</strong> 1976</p>
+        <div class="player-placeholder">0:00 / 6:30</div>
+      </div>
+
+      <!-- Música 3 -->
+      <div class="song-card">
+        <h3>Sweet Child O’Mine</h3>
+        <p><strong>Artista:</strong> Guns N' Roses</p>
+        <p><strong>Ano:</strong> 1987</p>
+        <div class="player-placeholder">0:00 / 5:56</div>
+      </div>
+
+      <!-- Música 4 -->
+      <div class="song-card">
+        <h3>Back in Black</h3>
+        <p><strong>Artista:</strong> AC/DC</p>
+        <p><strong>Ano:</strong> 1980</p>
+        <div class="player-placeholder">0:00 / 4:15</div>
+      </div>
+
+      <!-- Música 5 -->
+      <div class="song-card">
+        <h3>Smells Like Teen Spirit</h3>
+        <p><strong>Artista:</strong> Nirvana</p>
+        <p><strong>Ano:</strong> 1991</p>
+        <div class="player-placeholder">0:00 / 5:01</div>
+      </div>
+
+      <!-- Música 6 -->
+      <div class="song-card">
+        <h3>Imagine</h3>
+        <p><strong>Artista:</strong> John Lennon</p>
+        <p><strong>Ano:</strong> 1971</p>
+        <div class="player-placeholder">0:00 / 3:04</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer>
+    <div class="footer-content">
+      <div>Projeto Gitanno Music© – Todos os direitos reservados</div>
+      <div>Desenvolvido por Gitanno©</div>
+    </div>
+  </footer>
 </body>
 </html>
