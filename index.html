@@ -27,7 +27,6 @@
       text-shadow: 2px 2px 4px black;
     }
 
-    /* --- NAVBAR COM BARRA DE BUSCA INTEGRADA --- */
     nav {
       display: flex;
       justify-content: center;
@@ -35,12 +34,43 @@
       background-color: rgba(0, 0, 0, 0.3);
       padding: 0.5rem 1rem;
       flex-wrap: wrap;
+      gap: 10px;
     }
 
-    /* --- ESTILO DA BARRA DE BUSCA (como você pediu) --- */
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .nav-links a {
+      padding: 1rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.3rem;
+      transition: background 0.3s;
+    }
+
+    .nav-links a.active {
+      background-color: #555;
+      border-bottom: 2px solid #DAA520;
+    }
+
+    .nav-links a:hover {
+      background-color: #444;
+    }
+
+    .search-separator {
+      color: #DAA520;
+      font-weight: bold;
+      margin: 0 5px;
+    }
+
     .search-container {
       display: flex;
-      margin-right: 1rem;
+      align-items: center;
     }
 
     .search-container form {
@@ -55,11 +85,6 @@
       cursor: pointer;
       color: white;
       font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .search-container button:hover {
-      background: #c5941a;
     }
 
     .search-container input {
@@ -74,25 +99,6 @@
 
     .search-container input::placeholder {
       color: #ccc;
-    }
-
-    /* --- LINKS DO MENU --- */
-    nav a {
-      padding: 1rem;
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1.3rem;
-      transition: background 0.3s;
-    }
-
-    nav a.active {
-      background-color: #555;
-      border-bottom: 2px solid #DAA520;
-    }
-
-    nav a:hover {
-      background-color: #444;
     }
 
     main {
@@ -121,30 +127,29 @@
       margin: 0 2rem;
     }
 
-    /* --- RESPONSIVIDADE --- */
     @media (max-width: 768px) {
       header h1 {
         font-size: 3rem;
       }
+      
       nav {
         flex-direction: column;
-        padding: 0.5rem;
       }
+      
+      .nav-links {
+        margin-bottom: 10px;
+      }
+      
+      .search-separator {
+        display: none;
+      }
+      
       .search-container {
         width: 100%;
-        margin: 0.5rem 0;
-        order: -1;
       }
+      
       .search-container input {
         width: 100%;
-      }
-      nav a {
-        padding: 0.8rem;
-        font-size: 1rem;
-      }
-      main {
-        margin: 3rem auto 2rem;
-        padding: 1rem;
       }
     }
   </style>
@@ -155,19 +160,21 @@
   </header>
 
   <nav>
-    <!-- BARRA DE BUSCA (como você pediu: botão à esquerda, input à direita) -->
+    <div class="nav-links">
+      <a href="index.html" class="active">Início</a>
+      <a href="mpb.html">MPB</a>
+      <a href="rock.html">Rock</a>
+      <a href="jazz.html">Jazz & Blues</a>
+    </div>
+    
+    <span class="search-separator">ou</span>
+    
     <div class="search-container">
       <form action="busca.html" method="GET">
         <button type="submit">🔍 Buscar</button>
-        <input type="text" name="q" placeholder="Digite artista ou música..." required>
+        <input type="text" name="q" placeholder="música ou artista..." required>
       </form>
     </div>
-
-    <!-- LINKS DO MENU -->
-    <a href="index.html" class="active">Início</a>
-    <a href="mpb.html">MPB</a>
-    <a href="rock.html">Rock</a>
-    <a href="jazz.html">Jazz & Blues</a>
   </nav>
 
   <main>
