@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Acervo de Rock - Gitanno Music</title>
+  <title>Gitanno Music - Player Completo</title>
   <style>
     /* RESET E FONTE */
     body {
@@ -14,6 +14,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      padding-bottom: 80px; /* Espaço para o player fixo */
     }
 
     /* CABEÇALHO */
@@ -42,6 +43,7 @@
     .nav-links {
       display: flex;
       gap: 1.5rem;
+      justify-content: center;
     }
     .nav-links a {
       color: white;
@@ -56,7 +58,6 @@
       color: #DAA520;
       font-size: 1.8rem;
       margin: 0;
-      display: inline-block;
     }
 
     /* ÁREA DE MÚSICAS (4 COLUNAS) */
@@ -65,9 +66,6 @@
       padding: 2rem;
       max-width: 1400px;
       margin: 0 auto;
-      background-color: rgba(20, 20, 20, 0.8);
-      border-radius: 5px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
     }
     .song-grid {
       display: grid;
@@ -83,62 +81,123 @@
     }
     .song-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(218, 165, 32, 0.2);
     }
     .song-card h3 {
       color: #fff;
-      margin: 0;
+      margin: 0 0 0.5rem 0;
       font-size: 1.2rem;
     }
     .artist {
       color: #DAA520;
-      margin: 0.5rem 0;
+      margin: 0 0 1rem 0;
       font-weight: bold;
     }
-    .player {
-      margin: 1rem 0;
+    .song-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .play-btn, .preview-btn, .copy-link-btn {
+      border: none;
+      padding: 0.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s;
     }
     .play-btn {
       background: #DAA520;
-      border: none;
       color: #000;
-      padding: 0.5rem 1.5rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: all 0.3s;
     }
     .play-btn:hover {
       background: #ffc107;
     }
+    .preview-btn {
+      background: rgba(218, 165, 32, 0.2);
+      color: #DAA520;
+      border: 1px solid #DAA520;
+    }
+    .preview-btn:hover {
+      background: rgba(218, 165, 32, 0.4);
+    }
     .copy-link-btn {
       background: transparent;
-      border: 1px solid #DAA520;
       color: #DAA520;
-      width: 100%;
-      padding: 0.5rem;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: all 0.3s;
+      border: 1px solid #DAA520;
     }
     .copy-link-btn:hover {
       background: rgba(218, 165, 32, 0.2);
     }
 
-    /* RODAPÉ */
-    footer {
-      background: linear-gradient(to right, #000, #DAA520, #000);
-      padding: 1rem;
-      text-align: center;
-      margin-top: auto;
-    }
-    .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
+    /* PLAYER FIXO */
+    .global-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to right, #000, #222, #000);
+      padding: 0.8rem;
       display: flex;
-      justify-content: space-between;
-      color: white;
+      align-items: center;
+      gap: 1rem;
+      z-index: 1000;
+      border-top: 1px solid #DAA520;
+    }
+    .player-info {
+      flex: 1;
+      min-width: 0;
+    }
+    .player-info h4 {
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .player-info p {
+      margin: 0.2rem 0 0 0;
+      color: #DAA520;
+      font-size: 0.9rem;
+    }
+    .player-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .player-btn {
+      background: rgba(218, 165, 32, 0.7);
+      border: none;
+      color: #000;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .player-btn:hover {
+      background: #DAA520;
+    }
+    .progress-container {
+      flex: 1;
+      height: 4px;
+      background: #333;
+      border-radius: 2px;
+      margin: 0 1rem;
+      cursor: pointer;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #DAA520;
+      border-radius: 2px;
+      width: 0%;
+    }
+    .time-display {
+      font-size: 0.8rem;
+      color: #999;
+      min-width: 80px;
+      text-align: center;
     }
 
     /* RESPONSIVIDADE */
@@ -148,7 +207,10 @@
     @media (max-width: 768px) {
       header h1 { font-size: 1.8rem; }
       .song-grid { grid-template-columns: 1fr; }
-      .nav-links { flex-direction: column; gap: 0.5rem; }
+      .nav-links { flex-wrap: wrap; }
+      .global-player { flex-direction: column; padding: 0.5rem; }
+      .player-controls { width: 100%; justify-content: center; }
+      .progress-container { width: 100%; margin: 0.5rem 0; }
     }
   </style>
 </head>
@@ -158,7 +220,7 @@
     <h1>Gitanno Music</h1>
   </header>
 
-  <!-- NAVEGAÇÃO + TÍTULO "ACERVO DE ROCK" -->
+  <!-- NAVEGAÇÃO -->
   <nav>
     <div class="nav-container">
       <div class="nav-links">
@@ -167,123 +229,175 @@
         <a href="rock.html">Rock</a>
         <a href="jazz.html">Jazz e Blues</a>
       </div>
-    </div>
-    <div class="section-title-container">
-      <h2 class="section-title">Acervo de Rock</h2>
+      <div class="section-title-container">
+        <h2 class="section-title">Acervo de Rock</h2>
+      </div>
     </div>
   </nav>
 
-  <!-- CONTEÚDO PRINCIPAL (4 COLUNAS) -->
+  <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <div class="song-grid">
       <!-- Música 1 -->
-      <div class="song-card">
+      <div class="song-card" data-song="bohemian" data-url="https://exemplo.com/bohemian.mp3">
         <h3>Bohemian Rhapsody</h3>
         <p class="artist">Queen</p>
-        <div class="player">
-          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/bohemian.mp3')">
-            ▶ Ouvir Agora
+        <div class="song-actions">
+          <button class="play-btn" onclick="playFullSong('bohemian')">
+            ▶ Ouvir Completa
+          </button>
+          <button class="preview-btn" onclick="playPreview('bohemian', 30)">
+            ▶ Ouvir 30s
+          </button>
+          <button class="copy-link-btn" onclick="copySongLink('bohemian')">
+            🔗 Copiar Link
           </button>
         </div>
-        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/bohemian.mp3')">
-          Copiar Link
-        </button>
       </div>
 
       <!-- Música 2 -->
-      <div class="song-card">
+      <div class="song-card" data-song="hotel-california" data-url="https://exemplo.com/hotel-california.mp3">
         <h3>Hotel California</h3>
         <p class="artist">Eagles</p>
-        <div class="player">
-          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/hotel-california.mp3')">
-            ▶ Ouvir Agora
+        <div class="song-actions">
+          <button class="play-btn" onclick="playFullSong('hotel-california')">
+            ▶ Ouvir Completa
+          </button>
+          <button class="preview-btn" onclick="playPreview('hotel-california', 30)">
+            ▶ Ouvir 30s
+          </button>
+          <button class="copy-link-btn" onclick="copySongLink('hotel-california')">
+            🔗 Copiar Link
           </button>
         </div>
-        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/hotel-california.mp3')">
-          Copiar Link
-        </button>
       </div>
 
-      <!-- Música 3 -->
-      <div class="song-card">
-        <h3>Sweet Child O'Mine</h3>
-        <p class="artist">Guns N' Roses</p>
-        <div class="player">
-          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/sweet-child.mp3')">
-            ▶ Ouvir Agora
-          </button>
-        </div>
-        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/sweet-child.mp3')">
-          Copiar Link
-        </button>
-      </div>
-
-      <!-- Música 4 -->
-      <div class="song-card">
-        <h3>Back in Black</h3>
-        <p class="artist">AC/DC</p>
-        <div class="player">
-          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/back-in-black.mp3')">
-            ▶ Ouvir Agora
-          </button>
-        </div>
-        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/back-in-black.mp3')">
-          Copiar Link
-        </button>
-      </div>
-
-      <!-- Música 5 -->
-      <div class="song-card">
-        <h3>Smells Like Teen Spirit</h3>
-        <p class="artist">Nirvana</p>
-        <div class="player">
-          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/smells-like-teen-spirit.mp3')">
-            ▶ Ouvir Agora
-          </button>
-        </div>
-        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/smells-like-teen-spirit.mp3')">
-          Copiar Link
-        </button>
-      </div>
-
-      <!-- Música 6 -->
-      <div class="song-card">
-        <h3>Imagine</h3>
-        <p class="artist">John Lennon</p>
-        <div class="player">
-          <button class="play-btn" onclick="playSong('https://exemplo.com/musicas/imagine.mp3')">
-            ▶ Ouvir Agora
-          </button>
-        </div>
-        <button class="copy-link-btn" onclick="copyLink('https://exemplo.com/musicas/imagine.mp3')">
-          Copiar Link
-        </button>
-      </div>
+      <!-- Adicione mais músicas seguindo o mesmo padrão -->
     </div>
   </main>
 
-  <!-- RODAPÉ -->
-  <footer>
-    <div class="footer-content">
-      <div>Projeto Gitanno Music© – Todos os direitos reservados</div>
-      <div>Desenvolvido por Gitanno©</div>
+  <!-- PLAYER FIXO -->
+  <div class="global-player" id="globalPlayer" hidden>
+    <div class="player-info">
+      <h4 id="nowPlaying">Nenhuma música tocando</h4>
+      <p id="nowArtist"></p>
     </div>
-  </footer>
+    <div class="progress-container" onclick="seek(event)">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+    <div class="time-display">
+      <span id="currentTime">0:00</span> / <span id="totalTime">0:00</span>
+    </div>
+    <div class="player-controls">
+      <button class="player-btn" onclick="skipBack()">⏮</button>
+      <button class="player-btn" onclick="togglePlay()" id="playPauseBtn">⏯</button>
+      <button class="player-btn" onclick="skipNext()">⏭</button>
+    </div>
+    <audio id="audioPlayer"></audio>
+  </div>
 
-  <!-- SCRIPTS -->
   <script>
-    // FUNÇÃO PARA TOCAR MÚSICA
-    function playSong(url) {
-      const audio = new Audio(url);
-      audio.play().catch(e => alert("Clique para permitir áudio"));
+    // VARIÁVEIS GLOBAIS
+    const audio = document.getElementById("audioPlayer");
+    const globalPlayer = document.getElementById("globalPlayer");
+    let currentSong = null;
+    let previewTimer = null;
+
+    // TOCA MÚSICA COMPLETA
+    function playFullSong(songId) {
+      const songCard = document.querySelector(`[data-song="${songId}"]`);
+      const songUrl = songCard.getAttribute("data-url");
+      const songTitle = songCard.querySelector("h3").textContent;
+      const artist = songCard.querySelector(".artist").textContent;
+      
+      // Atualiza UI
+      document.getElementById("nowPlaying").textContent = songTitle;
+      document.getElementById("nowArtist").textContent = artist;
+      globalPlayer.hidden = false;
+      
+      // Configura áudio
+      audio.src = songUrl;
+      audio.play()
+        .then(() => {
+          currentSong = songId;
+          document.getElementById("playPauseBtn").innerHTML = "⏸";
+        })
+        .catch(e => alert("Clique para permitir áudio"));
+      
+      // Cancela preview se estiver ativo
+      if (previewTimer) {
+        clearTimeout(previewTimer);
+        previewTimer = null;
+      }
     }
 
-    // FUNÇÃO PARA COPIAR LINK
-    function copyLink(url) {
-      navigator.clipboard.writeText(url)
-        .then(() => alert("Link copiado!\n" + url))
-        .catch(() => prompt("Copie manualmente:", url));
+    // TOCA PREVIEW (30s)
+    function playPreview(songId, seconds) {
+      playFullSong(songId);
+      previewTimer = setTimeout(() => {
+        audio.pause();
+        audio.currentTime = 0;
+        document.getElementById("playPauseBtn").innerHTML = "⏯";
+      }, seconds * 1000);
     }
+
+    // COPIA LINK COMPARTILHÁVEL
+    function copySongLink(songId) {
+      const link = `${window.location.origin}${window.location.pathname}?play=${songId}`;
+      navigator.clipboard.writeText(link)
+        .then(() => alert(`Link copiado!\n${link}`))
+        .catch(() => prompt("Copie manualmente:", link));
+      
+      // Para a música se estiver tocando
+      if (!audio.paused && currentSong === songId) {
+        audio.pause();
+        document.getElementById("playPauseBtn").innerHTML = "⏯";
+      }
+    }
+
+    // CONTROLES DO PLAYER
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        document.getElementById("playPauseBtn").innerHTML = "⏸";
+      } else {
+        audio.pause();
+        document.getElementById("playPauseBtn").innerHTML = "⏯";
+      }
+    }
+    function skipBack() { audio.currentTime = Math.max(0, audio.currentTime - 10); }
+    function skipNext() { audio.currentTime = Math.min(audio.duration, audio.currentTime + 10); }
+    function seek(e) {
+      const percent = e.offsetX / e.target.offsetWidth;
+      audio.currentTime = percent * audio.duration;
+    }
+
+    // ATUALIZA BARRA DE PROGRESSO
+    audio.ontimeupdate = () => {
+      const progress = (audio.currentTime / audio.duration) * 100;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+      document.getElementById("currentTime").textContent = formatTime(audio.currentTime);
+    };
+    audio.onloadedmetadata = () => {
+      document.getElementById("totalTime").textContent = formatTime(audio.duration);
+    };
+    audio.onended = () => {
+      document.getElementById("playPauseBtn").innerHTML = "⏯";
+    };
+
+    // FORMATA TEMPO (MM:SS)
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // INICIA MÚSICA SE HOUVER LINK COMPARTILHADO
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const songToPlay = params.get("play");
+      if (songToPlay) playFullSong(songToPlay);
+    };
   </script>
 </body>
 </html>
