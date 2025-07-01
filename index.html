@@ -17,7 +17,6 @@
       background-color: rgba(0, 0, 0, 0.3);
       padding: 1rem;
       text-align: center;
-      position: relative; /* Para posicionar a busca */
     }
 
     header h1 {
@@ -28,13 +27,56 @@
       text-shadow: 2px 2px 4px black;
     }
 
+    /* --- NAVBAR COM BARRA DE BUSCA INTEGRADA --- */
     nav {
       display: flex;
       justify-content: center;
+      align-items: center;
       background-color: rgba(0, 0, 0, 0.3);
-      position: relative; /* Para alinhar a busca */
+      padding: 0.5rem 1rem;
+      flex-wrap: wrap;
     }
 
+    /* --- ESTILO DA BARRA DE BUSCA (como você pediu) --- */
+    .search-container {
+      display: flex;
+      margin-right: 1rem;
+    }
+
+    .search-container form {
+      display: flex;
+    }
+
+    .search-container button {
+      padding: 0.5rem 1rem;
+      background: #DAA520;
+      border: none;
+      border-radius: 20px 0 0 20px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .search-container button:hover {
+      background: #c5941a;
+    }
+
+    .search-container input {
+      padding: 0.5rem;
+      width: 200px;
+      border: none;
+      border-radius: 0 20px 20px 0;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      outline: none;
+    }
+
+    .search-container input::placeholder {
+      color: #ccc;
+    }
+
+    /* --- LINKS DO MENU --- */
     nav a {
       padding: 1rem;
       color: #fff;
@@ -51,43 +93,6 @@
 
     nav a:hover {
       background-color: #444;
-    }
-
-    /* --- ESTILOS DA BARRA DE BUSCA --- */
-    .search-container {
-      position: absolute;
-      right: 2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-    }
-
-    .search-container input {
-      padding: 0.5rem;
-      width: 200px;
-      border: none;
-      border-radius: 20px 0 0 20px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      outline: none;
-    }
-
-    .search-container input::placeholder {
-      color: #ccc;
-    }
-
-    .search-container button {
-      padding: 0.5rem 1rem;
-      background: #DAA520;
-      border: none;
-      border-radius: 0 20px 20px 0;
-      cursor: pointer;
-      color: white;
-    }
-
-    .search-container button:hover {
-      background: #c5941a;
     }
 
     main {
@@ -116,9 +121,22 @@
       margin: 0 2rem;
     }
 
+    /* --- RESPONSIVIDADE --- */
     @media (max-width: 768px) {
       header h1 {
         font-size: 3rem;
+      }
+      nav {
+        flex-direction: column;
+        padding: 0.5rem;
+      }
+      .search-container {
+        width: 100%;
+        margin: 0.5rem 0;
+        order: -1;
+      }
+      .search-container input {
+        width: 100%;
       }
       nav a {
         padding: 0.8rem;
@@ -128,32 +146,24 @@
         margin: 3rem auto 2rem;
         padding: 1rem;
       }
-      /* Ajuste da busca para mobile */
-      .search-container {
-        position: static;
-        transform: none;
-        margin: 1rem auto;
-        width: 90%;
-      }
-      .search-container input {
-        width: 70%;
-      }
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Gitanno Music</h1>
-    <!-- BARRA DE BUSCA NO CABEÇALHO -->
-    <div class="search-container">
-      <form action="busca.html" method="GET">
-        <input type="text" name="q" placeholder="Buscar música ou artista..." required>
-        <button type="submit">🔍 Buscar</button>
-      </form>
-    </div>
   </header>
 
   <nav>
+    <!-- BARRA DE BUSCA (como você pediu: botão à esquerda, input à direita) -->
+    <div class="search-container">
+      <form action="busca.html" method="GET">
+        <button type="submit">🔍 Buscar</button>
+        <input type="text" name="q" placeholder="Digite artista ou música..." required>
+      </form>
+    </div>
+
+    <!-- LINKS DO MENU -->
     <a href="index.html" class="active">Início</a>
     <a href="mpb.html">MPB</a>
     <a href="rock.html">Rock</a>
