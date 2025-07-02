@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #111; /* Fundo escuro neutro */
+      background: #111;
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -78,7 +78,7 @@
       background: linear-gradient(to right, #000, #DAA520, #000);
       padding: 1rem;
       text-align: center;
-      margin-top: auto; /* Fixa no final */
+      margin-top: auto;
     }
     .footer-content {
       max-width: 1200px;
@@ -116,11 +116,11 @@
   <!-- RESULTADOS -->
   <main>
     <div class="search-info">
-      <h2>Resultados para: <span style="color:white">"mike"</span></h2>
+      <h2>Resultados para: <span id="termo-buscado" style="color:white"></span></h2>
     </div>
 
     <div class="no-results">
-      <p>Nenhum resultado encontrado para <strong>"mike"</strong>.</p>
+      <p>Nenhum resultado encontrado para <strong id="termo-sem-resultado"></strong>.</p>
       <p><a href="index.html">Voltar à página inicial</a> ou refine sua busca.</p>
     </div>
   </main>
@@ -132,5 +132,16 @@
       <div>Desenvolvido por Gitanno©</div>
     </div>
   </footer>
+
+  <!-- SCRIPT DE BUSCA DINÂMICA -->
+  <script>
+    // Captura o termo da URL (?q=termo)
+    const params = new URLSearchParams(window.location.search);
+    const termo = params.get('q') || '[sem termo]';
+    
+    // Insere dinamicamente nos locais corretos
+    document.getElementById('termo-buscado').textContent = `"${termo}"`;
+    document.getElementById('termo-sem-resultado').textContent = `"${termo}"`;
+  </script>
 </body>
 </html>
