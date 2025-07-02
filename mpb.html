@@ -19,9 +19,9 @@
       padding-bottom: 90px;
     }
 
-    /* CABEÇALHO */
+    /* CABEÇALHO AJUSTADO */
     header {
-      background: linear-gradient(to right, #000, #DAA520, #000); /* DOURADO SUAVE */
+      background: linear-gradient(to right, #000, #DAA520, #000);
       padding: 1.5rem;
       text-align: center;
       box-shadow: 0 2px 15px rgba(0,0,0,0.7);
@@ -29,16 +29,24 @@
     header h1 {
       font-size: 3.8rem;
       margin: 0;
-      color: #DAA520; /* DOURADO SUAVE */
-      text-shadow: 0 0 15px rgba(218, 165, 32, 0.5); /* SOMBRA MAIS SUAVE */
+      color: #DAA520;
+      text-shadow: 
+        0 0 15px rgba(218, 165, 32, 0.7),
+        0 0 30px rgba(218, 165, 32, 0.4);
       letter-spacing: 3px;
+      font-weight: 700;
+      animation: breathe 3s ease-in-out infinite;
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
     }
 
     /* MENU DE NAVEGAÇÃO */
     nav {
       background: #000;
       padding: 1.2rem;
-      border-bottom: 2px solid #DAA520; /* DOURADO SUAVE */
+      border-bottom: 2px solid #DAA520;
     }
     .nav-links {
       display: flex;
@@ -48,29 +56,29 @@
     }
     .nav-links a {
       color: #000;
-      background: #DAA520; /* DOURADO SUAVE */
+      background: #DAA520;
       padding: 0.7rem 1.5rem;
       border-radius: 30px;
       font-weight: bold;
       text-decoration: none;
       transition: all 0.3s;
       border: 2px solid transparent;
-      box-shadow: 0 0 10px rgba(218, 165, 32, 0.5); /* SOMBRA MAIS SUAVE */
+      box-shadow: 0 0 10px rgba(218, 165, 32, 0.5);
       font-size: 1.1rem;
     }
     .nav-links a:hover {
       background: #000;
-      color: #DAA520; /* DOURADO SUAVE */
-      border: 2px solid #DAA520; /* DOURADO SUAVE */
+      color: #DAA520;
+      border: 2px solid #DAA520;
       transform: translateY(-3px);
-      box-shadow: 0 0 20px rgba(218, 165, 32, 0.3); /* SOMBRA MAIS SUAVE */
+      box-shadow: 0 0 20px rgba(218, 165, 32, 0.3);
     }
     .section-title {
       text-align: center;
-      color: #DAA520; /* DOURADO SUAVE */
+      color: #DAA520;
       font-size: 2rem;
       margin: 1rem 0;
-      text-shadow: 0 0 8px rgba(218, 165, 32, 0.3); /* SOMBRA MAIS SUAVE */
+      text-shadow: 0 0 8px rgba(218, 165, 32, 0.3);
     }
 
     /* LISTA DE MÚSICAS - 5 COLUNAS */
@@ -95,11 +103,11 @@
     }
     .song-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 15px rgba(218, 165, 32, 0.2); /* SOMBRA MAIS SUAVE */
-      border-color: #DAA520; /* DOURADO SUAVE */
+      box-shadow: 0 6px 15px rgba(218, 165, 32, 0.2);
+      border-color: #DAA520;
     }
     .song-card h3 {
-      color: #DAA520; /* DOURADO SUAVE */
+      color: #DAA520;
       margin-bottom: 0.5rem;
       font-size: 1rem;
       white-space: nowrap;
@@ -127,21 +135,21 @@
       font-size: 0.9rem;
     }
     .play-btn {
-      background: #DAA520; /* DOURADO SUAVE */
+      background: #DAA520;
       color: #000;
-      box-shadow: 0 0 8px rgba(218, 165, 32, 0.3); /* SOMBRA MAIS SUAVE */
+      box-shadow: 0 0 8px rgba(218, 165, 32, 0.3);
     }
     .play-btn:hover {
-      background: #B8860B; /* TOM MAIS ESCURO NO HOVER */
-      box-shadow: 0 0 12px rgba(218, 165, 32, 0.4); /* SOMBRA MAIS SUAVE */
+      background: #B8860B;
+      box-shadow: 0 0 12px rgba(218, 165, 32, 0.4);
     }
     .copy-link-btn {
-      background: rgba(218, 165, 32, 0.1); /* DOURADO SUAVE COM TRANSPARÊNCIA */
-      color: #DAA520; /* DOURADO SUAVE */
-      border: 1px solid #DAA520; /* DOURADO SUAVE */
+      background: rgba(218, 165, 32, 0.1);
+      color: #DAA520;
+      border: 1px solid #DAA520;
     }
     .copy-link-btn:hover {
-      background: rgba(218, 165, 32, 0.2); /* DOURADO SUAVE COM TRANSPARÊNCIA */
+      background: rgba(218, 165, 32, 0.2);
     }
 
     /* PLAYER FIXO */
@@ -155,7 +163,7 @@
       display: flex;
       align-items: center;
       gap: 1.2rem;
-      border-top: 3px solid #DAA520; /* DOURADO SUAVE */
+      border-top: 3px solid #DAA520;
       z-index: 1000;
       box-shadow: 0 -5px 20px rgba(0,0,0,0.7);
     }
@@ -164,13 +172,13 @@
       min-width: 0;
     }
     .player-info h4 {
-      color: #DAA520; /* DOURADO SUAVE */
+      color: #DAA520;
       font-size: 1.1rem;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
       margin: 0;
-      text-shadow: 0 0 3px rgba(218, 165, 32, 0.3); /* SOMBRA MAIS SUAVE */
+      text-shadow: 0 0 3px rgba(218, 165, 32, 0.3);
     }
     .progress-container {
       flex: 1;
@@ -186,14 +194,14 @@
     }
     .progress-bar {
       height: 100%;
-      background: #DAA520; /* DOURADO SUAVE */
+      background: #DAA520;
       border-radius: 4px;
       width: 0%;
-      box-shadow: 0 0 5px rgba(218, 165, 32, 0.5); /* SOMBRA MAIS SUAVE */
+      box-shadow: 0 0 5px rgba(218, 165, 32, 0.5);
     }
     .time-display {
       font-size: 0.9rem;
-      color: #DAA520; /* DOURADO SUAVE */
+      color: #DAA520;
       min-width: 100px;
       text-align: center;
       font-weight: bold;
@@ -203,7 +211,7 @@
       gap: 0.8rem;
     }
     .player-btn {
-      background: #DAA520; /* DOURADO SUAVE */
+      background: #DAA520;
       border: none;
       width: 40px;
       height: 40px;
@@ -215,12 +223,12 @@
       color: #000;
       font-weight: bold;
       font-size: 1.2rem;
-      box-shadow: 0 0 10px rgba(218, 165, 32, 0.3); /* SOMBRA MAIS SUAVE */
+      box-shadow: 0 0 10px rgba(218, 165, 32, 0.3);
       transition: all 0.3s;
       position: relative;
     }
     .player-btn:hover {
-      background: #B8860B; /* TOM MAIS ESCURO NO HOVER */
+      background: #B8860B;
       transform: scale(1.1);
     }
     .player-btn::after {
@@ -267,7 +275,7 @@
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO -->
+  <!-- CABEÇALHO COM REALCE AJUSTADO -->
   <header>
     <h1>Gitanno Music</h1>
   </header>
