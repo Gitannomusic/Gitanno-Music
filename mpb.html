@@ -19,30 +19,37 @@
       padding-bottom: 90px;
     }
 
-    /* CABEÇALHO AJUSTADO */
+    /* CABEÇALHO COM MÁXIMO DESTAQUE */
     header {
-      background: linear-gradient(to right, #000, #DAA520, #000);
-      padding: 1.5rem;
+      background: linear-gradient(to right, #000, #222, #000);
+      padding: 2rem;
       text-align: center;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.7);
+      border-bottom: 3px solid #DAA520;
     }
     header h1 {
-      font-size: 3.8rem;
+      font-size: 4rem;
       margin: 0;
-      color: #DAA520;
+      color: #FFECB3;
       text-shadow: 
-        0 0 15px rgba(218, 165, 32, 0.7),
-        0 0 30px rgba(218, 165, 32, 0.4);
+        0 0 5px #DAA520,
+        0 0 15px #DAA520,
+        0 0 25px #DAA520,
+        0 0 40px #B8860B;
       letter-spacing: 3px;
-      font-weight: 700;
+      font-weight: 800;
       animation: breathe 3s ease-in-out infinite;
+      padding: 10px 20px;
+      background: rgba(0,0,0,0.4);
+      border-radius: 10px;
+      display: inline-block;
+      border: 2px solid #DAA520;
     }
     @keyframes breathe {
       0%, 100% { transform: scale(1); }
       50% { transform: scale(1.03); }
     }
 
-    /* MENU DE NAVEGAÇÃO */
+    /* MENU DE NAVEGAÇÃO (MANTIDO IGUAL) */
     nav {
       background: #000;
       padding: 1.2rem;
@@ -81,7 +88,7 @@
       text-shadow: 0 0 8px rgba(218, 165, 32, 0.3);
     }
 
-    /* LISTA DE MÚSICAS - 5 COLUNAS */
+    /* LISTA DE MÚSICAS - 5 COLUNAS (MANTIDO IGUAL) */
     main {
       padding: 2rem;
       max-width: 1800px;
@@ -152,7 +159,7 @@
       background: rgba(218, 165, 32, 0.2);
     }
 
-    /* PLAYER FIXO */
+    /* PLAYER FIXO (MANTIDO IGUAL) */
     .global-player {
       position: fixed;
       bottom: 0;
@@ -251,7 +258,7 @@
       opacity: 1;
     }
 
-    /* RESPONSIVIDADE */
+    /* RESPONSIVIDADE (MANTIDO IGUAL) */
     @media (max-width: 1600px) {
       .song-grid { grid-template-columns: repeat(4, 1fr); }
     }
@@ -265,7 +272,10 @@
     }
     @media (max-width: 600px) {
       .song-grid { grid-template-columns: 1fr; }
-      header h1 { font-size: 2.2rem; }
+      header h1 { 
+        font-size: 2.2rem;
+        padding: 8px 15px;
+      }
       .nav-links { gap: 0.8rem; }
       .nav-links a { padding: 0.6rem 1rem; }
       .global-player { flex-direction: column; gap: 1rem; padding: 1rem; }
@@ -275,12 +285,12 @@
   </style>
 </head>
 <body>
-  <!-- CABEÇALHO COM REALCE AJUSTADO -->
+  <!-- CABEÇALHO COM DESTAQUE REFORÇADO -->
   <header>
     <h1>Gitanno Music</h1>
   </header>
 
-  <!-- MENU DE NAVEGAÇÃO -->
+  <!-- MENU DE NAVEGAÇÃO (MANTIDO IGUAL) -->
   <nav>
     <div class="nav-links">
       <a href="index.html">Início</a>
@@ -291,7 +301,7 @@
     <h2 class="section-title">Acervo de MPB</h2>
   </nav>
 
-  <!-- LISTA DE MÚSICAS -->
+  <!-- LISTA DE MÚSICAS (MANTIDO IGUAL) -->
   <main>
     <div class="song-grid">
       <!-- Música 1 -->
@@ -356,7 +366,7 @@
     </div>
   </main>
 
-  <!-- PLAYER FIXO -->
+  <!-- PLAYER FIXO (MANTIDO IGUAL) -->
   <div class="global-player" id="globalPlayer" hidden>
     <div class="player-info">
       <h4 id="nowPlaying">▶ Nenhuma música tocando</h4>
@@ -376,11 +386,11 @@
   </div>
 
   <script>
-    // VARIÁVEIS GLOBAIS
+    // VARIÁVEIS GLOBAIS (MANTIDO IGUAL)
     const audio = document.getElementById("audioPlayer");
     const globalPlayer = document.getElementById("globalPlayer");
 
-    // TOCAR MÚSICA
+    // TOCAR MÚSICA (MANTIDO IGUAL)
     function playSong(songId) {
       const songCard = document.querySelector(`[data-song="${songId}"]`);
       const songUrl = songCard.getAttribute("data-url");
@@ -395,7 +405,7 @@
         .catch(e => alert("Clique para permitir áudio"));
     }
 
-    // COPIAR LINK
+    // COPIAR LINK (MANTIDO IGUAL)
     function copyLink(songId) {
       const link = `${window.location.origin}${window.location.pathname}?play=${songId}`;
       navigator.clipboard.writeText(link)
@@ -403,7 +413,7 @@
         .catch(() => prompt("Copie manualmente:", link));
     }
 
-    // CONTROLES DO PLAYER
+    // CONTROLES DO PLAYER (MANTIDO IGUAL)
     function togglePlay() {
       if (audio.paused) {
         audio.play();
@@ -420,7 +430,7 @@
       audio.currentTime = percent * audio.duration;
     }
 
-    // ATUALIZAR BARRA DE PROGRESSO
+    // ATUALIZAR BARRA DE PROGRESSO (MANTIDO IGUAL)
     audio.ontimeupdate = () => {
       const progress = (audio.currentTime / audio.duration) * 100;
       document.getElementById("progressBar").style.width = `${progress}%`;
@@ -433,14 +443,14 @@
       document.getElementById("playPauseBtn").innerHTML = "⏯";
     };
 
-    // FORMATAR TEMPO (MM:SS)
+    // FORMATAR TEMPO (MM:SS) (MANTIDO IGUAL)
     function formatTime(seconds) {
       const mins = Math.floor(seconds / 60);
       const secs = Math.floor(seconds % 60);
       return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // INICIAR MÚSICA SE HOUVER LINK COMPARTILHADO
+    // INICIAR MÚSICA SE HOUVER LINK COMPARTILHADO (MANTIDO IGUAL)
     window.onload = () => {
       const params = new URLSearchParams(window.location.search);
       const songToPlay = params.get("play");
