@@ -62,15 +62,19 @@
       color: #DAA520;
       margin-bottom: 2rem;
     }
-    .no-results {
+    .results-container {
       text-align: center;
       padding: 2rem;
       background: rgba(0,0,0,0.3);
       border-radius: 5px;
     }
-    .no-results a {
+    .results-container a {
       color: #DAA520;
       text-decoration: none;
+      font-weight: bold;
+    }
+    .results-container a:hover {
+      text-decoration: underline;
     }
 
     /* RODAPÉ */
@@ -119,9 +123,8 @@
       <h2>Resultados para: <span id="termo-buscado" style="color:white"></span></h2>
     </div>
 
-    <div class="no-results">
-      <p>Nenhum resultado encontrado para <strong id="termo-sem-resultado"></strong>.</p>
-      <p><a href="index.html">Voltar à página inicial</a> ou refine sua busca.</p>
+    <div class="results-container" id="results-display">
+      <!-- Resultados serão inseridos aqui pelo JavaScript -->
     </div>
   </main>
 
@@ -133,15 +136,91 @@
     </div>
   </footer>
 
-  <!-- SCRIPT DE BUSCA DINÂMICA -->
+  <!-- SISTEMA DE BUSCA FRONTEND -->
   <script>
-    // Captura o termo da URL (?q=termo)
+    // Banco de dados de termos pesquisáveis (ATUALIZE CONFORME SEU CONTEÚDO)
+    const bancoDeDados = {
+      "queen": {
+        pagina: "rock.html",
+        tipo: "Banda de Rock",
+        descricao: "Banda britânica formada em 1970"
+      },
+      "nirvana": {
+        pagina: "rock.html",
+        tipo: "Banda de Grunge",
+        descricao: "Banda dos anos 90 liderada por Kurt Cobain"
+      },
+      "elis regina": {
+        pagina: "mpb.html",
+        tipo: "Cantora",
+        descricao: "Uma das maiores vozes da MPB"
+      },
+      "tom jobim": {
+        pagina: "mpb.html",
+        tipo: "Compositor",
+        descricao: "Pai da Bossa Nova"
+      },
+      "bb king": {
+        pagina: "jazz.html",
+        tipo: "Músico de Blues",
+        descricao: "Rei do Blues"
+      }
+    };
+
+    // Captura o termo da URL
     const params = new URLSearchParams(window.location.search);
-    const termo = params.get('q') || '[sem termo]';
+    const termoBusca = params.get('q') || '';
     
-    // Insere dinamicamente nos locais corretos
-    document.getElementById('termo-buscado').textContent = `"${termo}"`;
-    document.getElementById('termo-sem-resultado').textContent = `"${termo}"`;
+    // Exibe o termo buscado
+    document.getElementById('termo-buscado').textContent = `"${termoBusca}"`;
+    
+    // Processa os resultados
+    const resultsDiv = document.getElementById('results-display');
+    const termoFormatado = termoBusca.toLowerCase().trim();
+    
+    if (bancoDeDados[termoFormatado]) {
+      const item = bancoDeDados[termoFormatado];
+      resultsDiv.innerHTML = `
+        <div style="margin-bottom: 1rem;">
+          <p style="color: #DAA520; font-size: 1.2rem; margin-bottom: 0.5rem;">
+            ✔️ Resultado encontrado
+          </p>
+          <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">
+            <strong>${termoFormatado.charAt(0).toUpperCase() + termoFormatado.slice(1)}</strong>
+            <span style="color: #aaa;">(${item.tipo})</span>
+          </p>
+          <p style="margin-bottom: 1rem;">${item.descricao}</p>
+          <a href="${item.pagina}" style="
+            background: #DAA520;
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+          ">
+            Ver em ${item.pagina.split('.')[0].toUpperCase()}
+          </a>
+        </div>
+      `;
+    } else {
+      resultsDiv.innerHTML = `
+        <p style="margin-bottom: 1rem;">
+          Nenhum resultado encontrado para <strong>"${termoBusca}"</strong>.
+        </p>
+        <p>
+          <a href="index.html" style="
+            background: rgba(218, 165, 32, 0.2);
+            color: #DAA520;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+          ">
+            Voltar à página inicial
+          </a>
+        </p>
+      `;
+    }
   </script>
 </body>
 </html>
